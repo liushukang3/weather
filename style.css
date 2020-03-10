@@ -1,0 +1,231 @@
+* {
+    margin:0;
+    padding:0;
+}
+img,canvas {
+    display: block;
+}
+li {
+    list-style: none;
+}
+.clearfix::after,.clearfix::before {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+body{
+    font-size: 0.14rem;
+}
+.weather-box {
+    width: 100%;
+    position: absolute;
+    min-height: 100%;
+}
+/* 夜晚背景 */
+.night {
+    background: linear-gradient(-240deg, #566B8A,#26344C );
+}
+/* 晴天背景 */
+.sun {
+    background: linear-gradient(-240deg, #A3C9EC,#076DCD );
+}
+/* 雨天 阴天背景 */
+.rain {
+    background: linear-gradient(-240deg, #a5b3b9,rgb(105,151,185) );
+}
+.my-place {
+    width: 100%;
+    height: 3rem;
+
+    /* background-color: aqua; */
+    text-align: center;
+    padding: 0.48rem 0.2rem 0.1rem 0.2rem;
+    box-sizing: border-box;
+}
+.city-name {
+    font-size: 0.16rem;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+}
+.city-name::after {
+    content: "";
+    display: inline-block;
+    vertical-align: -0.03rem;
+    margin-left: 0.05rem;
+    background: url(icon-weather/dingwei.png) no-repeat center;
+    background-size: cover;
+    width: 0.18rem;
+    height: 0.18rem;
+}
+.temperature {
+    font-size: 0.64rem;
+    color: rgba(255, 255, 255, 0.95);
+
+}
+.temperature::after {
+    content: "\2103";
+    font-size: 0.26rem;
+    vertical-align: 0.28rem;
+    margin-left: 0.03rem;
+}
+.max-min {
+    color: rgba(255, 255, 255, 0.7);
+}
+.max {
+    color: rgba(255, 255, 255, 0.95);
+}
+.detail {
+    margin-top: 0.08rem;
+    letter-spacing: 0.01rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+.box {
+    position: relative;
+    height: 100%;
+}
+.box::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -0.11rem;
+    left: 0;
+    width: 100%;
+    border-bottom:0.01rem solid rgba(255, 255, 255, 0.3);
+}
+.source,.update-time {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.12rem;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+.source {
+    left: 0;
+}
+.source::before {
+    content: "";
+    display: inline-block;
+    width: 0.12rem;
+    height: 0.12rem;
+    background: url(icon-weather/qixiangzhan.png) center no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 0.03rem;
+}
+.update-time {
+    right: 0;
+}
+
+.hours-weather {
+    height: 0.95rem;
+    padding: 0.18rem 0rem 0.18rem 0rem;
+    /* padding-right: 0; */
+    overflow: hidden;
+    /* box-sizing: border-box; */
+    letter-spacing: 0.01rem;
+}
+.hours-box {
+    /* width: 120%; */
+    height: 1.35rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.hours-box ul {
+    display: flex;
+}
+.hours-w {
+    height: 0.95rem;
+    /* padding-left: 0.2rem; */
+    margin-right: 0.2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.95);
+}
+.hours-w:first-child {
+    padding-left: 0.24rem;
+}
+.hours-w:last-child{
+    padding-right: 0.24rem;
+}
+.hour {
+    font-size: 0.11rem;
+}
+.hour-icon {
+    width: 0.32rem;
+    height: 0.28rem;
+    margin: 0.25rem 0 0.1rem 0;
+    padding-left: 0.03rem;
+   overflow: hidden;
+   position: relative;
+   /* box-sizing: border-box; */
+}
+
+img{
+    width: 0.28rem;
+    /* 利用图片阴影改变图片颜色 drop-shadow(x y color); */
+    -webkit-filter: drop-shadow(0 0.28rem rgba(255, 255, 255, 0.95));
+    filter: drop-shadow(0 0.28rem rgba(255, 255, 255, 0.95));
+    position: absolute;
+    top: -0.28rem;
+
+}
+/* 图片变成白色后，溢出隐藏是看不见的 但是加上透明度就可以看见 */
+.opacity {
+    opacity: 0.7;
+}
+.opacity2 {
+    opacity: 0.999;
+}
+.days-weather {
+    padding: 0 .2rem;
+}
+
+.days-w {
+    height: 0.12rem;
+    position: relative;
+    padding: 0.18rem 0rem 0.18rem 0rem;
+    border-top: 0.01rem solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.01rem;
+}
+.day,.day-w,.day-max-min {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.day {
+    left: 0;
+
+}
+.day-w {
+    width: 0.28rem;
+    height: 0.28rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+.day-max-min {
+    right: 0;
+}
+.days-w:last-child {
+    border-bottom: 0.01rem solid rgba(255, 255, 255, 0.3);
+    height: 0.5rem;
+    /* padding-top: 0.3rem; */
+}
+.more-weather{
+    /* height: 0.3rem; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    letter-spacing: 0.02rem;
+    
+}
